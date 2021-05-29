@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  db:
+    image: 'bitnami/mysql:5.7'
+    container_name: db
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_USER=lumen
+      - MYSQL_PASSWORD=lumen
+      - MYSQL_DATABASE=lumen
+    ports:
+    - 13306:3306
+    networks:
+      - app-tier
